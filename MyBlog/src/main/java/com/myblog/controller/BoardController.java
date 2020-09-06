@@ -115,7 +115,7 @@ public class BoardController {
 			File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
-			String fileUrl = "MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			String fileUrl = "\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
 			
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
