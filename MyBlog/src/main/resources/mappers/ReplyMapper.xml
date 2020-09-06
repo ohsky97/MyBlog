@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myblog.mapper.ReplyMapper">
+	
+	<select id="getReplyList" resultType="com.myblog.domain.Reply">
+		select * from
+			tbl_reply 
+		where 
+			replybno = #{replybno}
+		order by regdate asc
+		
+	</select>
+	
+	<insert id="registReply" parameterType="com.myblog.domain.Reply">
+		insert into tbl_reply
+			(replybno, replycontent, regid, regdate, editdate)
+		values
+			(#{replybno}, #{replycontent}, #{regid}, #{regdate}, #{editdate})
+	</insert>
+	
+	<update id="updateReply" parameterType="com.myblog.domain.Reply">
+		update tbl_reply set
+			replycontent = #{replycontent},
+			editdate = #{editdate}
+		where
+			rno = #{rno}
+	</update>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete from tbl_reply where rno = #{rno}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@import url(normalize.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+/* categoryBar 공동 css */
+.categoryBar {
+	position: relative;
+	display: none;
+	width: 1920px;
+	height: 1080px;
+}
+
+/* categoryImage 영역 */
+.categoryBar .categoryImage {
+	position: absolute;
+	top: 278px;
+	left: 100px;
+	width: 545px;
+	height: 525px;
+
+	
+	background-color: #333;
+}
+
+
+/* categoryList 영역 */
+.categoryBar .categoryList {
+	position: absolute;
+	right: 0;
+	width: 1300px;
+	height: 100%;
+
+}
+
+.categoryList img {
+	width: 100%;
+	height: 100%;
+}
+
+.categoryList ul {
+	position: fixed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

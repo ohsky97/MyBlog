@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myblog.mapper.UserMapper">
+
+	<!-- 회원가입 -->
+	<insert id="registUser">
+		INSERT INTO tbl_user (username, userid, userpwd, userpn) values (#{username}, #{userid}, #{userpwd}, #{userpn})
+	</insert>
+
+	<!-- 아이디(이메일) 중복검사 -->
+	<select id="checkId" resultType="int">
+		select count(*) from tbl_user where userid = #{userid}
+	</select>
+	
+	<!-- 로그인 확인 -->
+	<select id="logInCheck" resultType="com.myblog.domain.UserEntity">
+		select * from tbl_user where userid = #{userid}
+	</select>
+	
+	<!-- 해당회원 이름, 전화번호 가져오기 -->
+	<select id="findUser" resultType="int">
+		select count(*) from tbl_user where username = #{username} and ${userpn} = #{userpn}
+	</select>
+	
+	<!-- 임시 비밀번호 변경 -->
+	<update id="updatePwd">
+		update tbl_user set userpwd = #{userpwd}, update_date = NOW() where ${userpn} = #{userpn}
+	</update>
+	
+	<!-- 회원번호로 회원정보 가져오기 -->
+	<select id="findUserByUno" resultType="com.myblog.domain.UserEntity">
+		select * from tbl_user where uno = #{uno}
+	</select>
+	
+</mapper>
+
+
+
+

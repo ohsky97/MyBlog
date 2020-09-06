@@ -1,0 +1,97 @@
+{"properties": [
+  {
+    "name": "chatbot.name",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.name'"
+  },
+  {
+    "name": "chatbot.base-package",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.base-package'"
+  },
+  {
+    "name": "chatbot.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enabled'"
+  },
+  {
+    "name": "chatbot.enableBase",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enableBase'"
+  },
+  {
+    "name": "chatbot.enableKnowledge",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enableKnowledge'"
+  },
+  {
+    "name": "chatbot.hostName",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.hostName'"
+  },
+  {
+    "name": "chatbot.port",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.port'"
+  },
+  {
+    "name": "chatbot.timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.timeout'"
+  },
+  {
+    "name": "chatbot.password",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.password'"
+  },
+  {
+    "name": "chatbot.usePool",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.usePool'"
+  },
+  {
+    "name": "chatbot.useSsl",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.useSsl'"
+  },
+  {
+    "name": "chatbot.db-index",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.db-index'"
+  },
+  {
+    "name": "chatbot.client-name",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.client-name'"
+  },
+  {
+    "name": "chatbot.convert-pipeline-and-tx-results",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.convert-pipeline-and-tx-results'"
+  },
+  {
+    "name": "chatbot.command-prefix",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.command-prefix'"
+  },
+  {
+    "name": "chatbot.enableBase",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enableBase'"
+  },
+  {
+    "name": "chatbot.enableBase",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enableBase'"
+  },
+  {
+    "name": "chatbot.enableBase",
+    "type": "java.lang.String",
+    "description": "A description for 'chatbot.enableBase'"
+  },
+  {
+    "name": "file.upload-dir",
+    "type": "java.lang.String",
+    "description": "A description for 'file.upload-dir'"
+  }
+]}

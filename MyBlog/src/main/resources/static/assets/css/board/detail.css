@@ -1,0 +1,187 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+	
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	
+	background: #022020;
+}
+
+/* 세션만료 팝업창 */
+.sessionPopup {
+	position: absolute;
+	display: none;
+	width: 402px;
+	height: 252px;
+	left: 50%;
+	top: 20%;
+	
+	margin-left: -201px;
+	border: 1px solid #333;
+	border-radius: 20px;
+	padding: 50px;
+	
+	background: #fcfcfc;
+	z-index: 10;
+}
+
+.sessionPopup .countMin {
+	margin-left: 50px;
+}
+
+.sessionPopup button {
+	margin-top: 115px;
+	margin-left: 50px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	padding: 8px;
+	
+	cursor: pointer;
+}
+
+.sessionPopup button:hover {
+	background: #333;
+	color: #fff;
+}
+
+
+/* header */
+header {
+	position: relative;
+	height: 70px;
+	width: 100%;
+	
+	z-index: 3;
+}
+
+header .logo {
+	position: absolute;
+	bottom: 0;
+	
+	margin-left: 150px;
+}
+
+header .myPage {
+	position: absolute;
+	width: 30px;
+	bottom: 0;
+	right: 0;
+	
+	margin-right: 150px;
+}
+
+/* main */
+main {
+	position: relative;
+	padding: 70px 0 100px 0;
+}
+
+main .boardTitle {
+	margin: 10pt;
+	font-weight: 700;
+	font-size: 22pt;
+}
+
+main .boardInfoBox {
+	margin: 10pt;
+	color: #6b6b6b;
+}
+
+main .boardAuthor {
+	margin-right: 10pt;
+	font-size: 10pt;
+}
+
+main .boardDate {
+	font-size: 10pt;
+}
+
+main .boardContent {
+	margin: 10pt;
+	font-size: 12pt;
+	color: #444343;
+}
+
+main .tag {
+	margin: 10pt;
+	font-size: 11pt;
+}
+
+main .fileDownload {
+	position: relative;
+	margin: 10pt;
+	padding-bottom: 10pt;
+	font-size: 11pt;
+}
+
+.fileDownload .btnDeleteFile {
+	position: absolute;
+	right: 16px;
+	padding: 3px 4px 3px 4px;
+	
+	font-size: 12px;
+	cursor: pointer;
+	
+}
+
+main .btnGroup {
+	position: absolute;
+	width: 180px;
+	right: 0;
+	margin: 0;
+}
+
+.btnGroup #btnList {
+	position: absolute;
+	left: 0;
+}
+
+.btnGroup #btnUpdate {
+	position: absolute;
+	left: 50%;
+	margin-left: -29px;
+}
+
+.btnGroup #btnDelete {
+	position: absolute;
+	right: 14px;
+}
+
+/* modal */
+.modal-body label {
+	font-weight: bold;
+}
+
+
+/* replyArea */
+#replyArea {
+	position: relative;
+	margin-top: 100px;
+}
+
+#replyArea #btnRegistReply {
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* replyListForm */
+#replyListForm {
+	padding-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+

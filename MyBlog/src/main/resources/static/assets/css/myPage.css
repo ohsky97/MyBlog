@@ -1,0 +1,620 @@
+@charset "UTF-8";
+@import url(normalize.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+	position: fixed;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	
+}
+
+/* background */
+article {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+article video {
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	
+}
+
+article:nth-of-type(2), /* Info */
+article:nth-of-type(3), /* brand */
+article:nth-of-type(4), /* service */
+article:nth-of-type(5), /* QnA */
+article:nth-of-type(6) /* coupon */ {
+	display: none;
+}
+
+
+/* header */
+header {
+	position: relative;
+	height: 70px;
+	width: 1770px;
+	margin: auto;
+}
+
+header .backBtn {
+	position: absolute;
+	bottom: 5px;
+	
+	cursor: pointer;
+}
+
+header .logo {
+	position: absolute;
+	bottom: 0;
+	left: 865px;
+	
+	cursor: pointer;
+}
+
+header .myPage {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding-right: 87px;
+	
+	cursor: pointer;
+}
+
+header .categoryBarBtn {
+	position: absolute;
+	bottom: 3px;
+	right: 0;
+	
+	cursor: pointer;
+}
+
+/* 세션만료 팝업창 */
+.sessionPopup {
+	position: absolute;
+	display: none;
+	left: 755px;;
+	top: 20%;
+	border: 1px solid #333;
+	border-radius: 20px;
+	padding: 50px;
+	width: 300px;
+	height: 150px;
+	
+	background: #fcfcfc;
+	z-index: 2;
+}
+
+.sessionPopup .countMin {
+	margin-left: 50px;
+}
+
+.sessionPopup button {
+	margin-top: 115px;
+	margin-left: 50px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	padding: 8px;
+	
+	cursor: pointer;
+}
+
+.sessionPopup button:hover {
+	background: #333;
+	color: #fff;
+}
+
+/* contents */
+.contents {
+	position: absolute;
+	width: 100%;
+	height: 937px;
+}
+
+/* contents .snsIcon */
+.contents .snsIcon {
+	position: relative;
+	width: 105px;
+	height: 110px;
+	margin: 0;
+	top: 385px;
+	
+	z-index: 3;
+}
+
+.snsIcon #fac {
+	position: absolute;
+	font-size: 35px;
+	left: 40px;
+	
+	color: #4A3131;
+}
+
+.snsIcon #ins {
+	position: absolute;
+	font-size: 35px;
+	bottom: 0;
+	left: 38px;
+	
+	color: #4A3131;
+}
+
+/* .myPageList */
+.myPageList {
+	position: absolute;
+	width: 230px;
+	height: 755px;
+	top: 180px;
+	left: 540px;
+}
+
+.myPageList a {
+	display: block;
+	width: 124px;
+	height: 44px;
+	
+	margin-top: 37px;
+	margin-left: 45px;
+	border: 1px solid #fff;
+	padding: 22px 10px 22px 10px;
+	
+	opacity: 0;
+	
+	cursor: pointer;
+}
+
+/* .myPageList brand */
+.myPageList .brandBtn {
+	margin-top: 57px;
+}
+
+
+/* .myPageList service */
+.myPageList .serviceBtn {
+	margin-top: 60px;
+}
+
+
+/* .myPageList QnA */
+.myPageList .QnABtn {
+	margin-top: 56px;
+}
+
+
+/* .myPageList coupon */
+.myPageList .couponBtn {
+	margin-top: 54px;
+}
+
+
+/* .Info */
+.Info {
+	position: relative;
+	display: none;
+	width: 710px;
+	height: 550px;
+	top: 100px;
+	left: 605px;
+	
+}
+
+/* .Info .con1 */
+.Info .con1 {
+	position: relative;
+	width: 10%;
+	height: 43px;
+	opacity: 0;
+}
+
+.Info .nextCon {
+	position: absolute;
+	bottom: 40px;
+	left: 338px;
+
+	color: #B6987E;
+	font-size: 15px;
+	cursor: pointer;
+	
+	transition: all 0.2s;
+}
+
+.Info .nextCon:hover {
+	transform: scale(1.5);
+}
+
+/* .Info .con2 */
+.Info .con2 {
+	position: relative;
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+.con2 h2 {
+	position: absolute;
+	top: -70px;
+	left: 180px;
+	font-size: 40px;
+	
+}
+
+/* .backImg */
+.con2 .backImg {
+	position: relative;
+	width: 100%;
+	height: 434px;
+	background: #21212A;
+	border-radius: 10px;
+}
+
+/* .backImg img */
+.backImg .logo {
+	width: 36px;
+	margin-top: 35px;
+	margin-left: 35px;
+}
+
+/* .backImg .myInfo */
+.backImg .myInfo {
+	position: absolute;
+	bottom: 0;
+	width: 355px;
+	height: 226px;
+}
+
+.myInfo div:nth-of-type(1) {
+	margin-top: 38px;
+	margin-left: 35px;
+}
+
+.myInfo div:nth-of-type(2) {
+	margin-top: 15px;
+	margin-left: 35px;
+}
+
+.myInfo div:nth-of-type(3) {
+	margin-top: 15px;
+	margin-left: 35px;
+}
+
+.myInfo label {
+	font-size: 20px;
+	color: #ddd;
+}
+
+.myInfo input {
+	width: 100%;
+	border: none;
+	padding: 2px 0 2px 0;
+	
+	background: #21212A;
+	color: #bbb;
+	font-size: 18px;
+	
+	outline: none;
+}
+
+/* .backImg .adwCard */
+.backImg .adwCard {
+	position: absolute;
+	bottom: 120px;
+	right: -55px;
+	transform: rotate(270deg);
+}
+
+.adwCard span:nth-of-type(1) {
+	color: #ddd;
+	font-size: 15px;
+}
+
+.adwCard span:nth-of-type(2) {
+	color: #bbb;
+	font-size: 12px;
+}
+
+.con2 .InfoUpdateBtn, .InfoUpdateSuc {
+	position: absolute;
+	width: 100px;
+	height: 38px;
+	bottom: 0;
+	left: 305px;
+	
+	border-radius: 5px;
+	
+	background: #21212A;
+	color: #B6987E;
+	font-size: 18px;
+	
+	outline: none;
+	cursor: pointer;
+
+}
+
+.con2 .InfoUpdateSuc {
+	display: none;
+}/* end Info css */
+
+
+
+/* .brand */
+.brand {
+	position: relative;
+	display: none;
+	width: 100%;
+	height: 665px;
+	
+	top: 80px;
+	
+}
+
+.brand h2 {
+	position: absolute;
+	left: 280px;
+	top: -80px;
+	
+	color: #58414A;
+	font-size: 40px;
+	font-weight: 500;
+	text-shadow: -6px 5px 4px #777;
+}
+
+/* .myBrand */
+.brand .myBrand {
+	position: absolute;
+	width: 500px;
+	/* height: 560px; */
+	height: 100%;
+
+	left: 280px;
+}
+
+/* .brandUpdateBtn */
+.myBrand .brandInsert, .success, .update, .updateSuccess {
+	position: absolute;
+	bottom: 0;
+	left: 187px;
+
+	border: 1px solid #CBBAB3;
+	border-radius: 5px;
+	padding: 9px 32px 9px 32px;
+
+	background: #CBBAB3;
+	color: #3F2B2B;
+	
+	font-size: 15px;
+	
+	outline: none;
+	cursor: pointer;
+}
+
+.success, .update, .updateSuccess {
+	display: none;
+}
+
+/* .brandCon1 */
+.brand .brandCon1 {
+	position: absolute;
+	display: none;
+	width: 500px;
+	/* height: 560px; */
+	height: 100%;
+
+	right: 280px;
+}
+
+/* .fir */
+.brandCon1 .fir1 {
+	width: 100%;
+}
+
+.fir1 label {
+	font-size: 22px;
+	
+	color: #3F2B2B;
+}
+
+/* .sec1 */
+.brandCon1 .sec1 {
+	width: 100%;
+	margin-top: 95px;
+}
+
+.sec1 label {
+	font-size: 22px;
+	color: #3F2B2B;
+}
+
+/* thi1 */
+.brandCon1 .thi1 {
+	width: 100%;
+	margin-top: 95px;
+}
+
+.thi1 label {
+	font-size: 22px;
+	color: #3F2B2B;
+}
+
+
+/* fir, sec, thi > label, textarea */
+.brandCon1 input {
+	padding-bottom: 7px;
+}
+
+.brandCon1 input, textarea {
+	width: 100%;
+	
+	margin-top: 22px;
+	border: 0;
+	border-bottom: 1px solid #3F2B2B;
+	
+	background-color: transparent;
+	
+	font-size: 16px;
+	color: #3F2B2B;
+	
+	outline: none;
+}
+
+.brandCon1 .conFooter1 {
+	position: relative;
+	width: 100%;
+	height: 241px;
+}
+
+.conFooter1 label {
+	position: absolute;
+	bottom: 0;
+	left: 232px;
+	color: #333;
+	font-size: 18px;
+}
+
+.conFooter1 span:nth-of-type(1) {
+	position: absolute;
+	bottom: 0;
+	
+	font-size: 24px;
+	font-weight: lighter;
+	
+	color: #777;
+}
+
+.conFooter1 span:nth-of-type(2) {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+	font-size: 24px;
+	font-weight: lighter;
+	
+	color: #333;
+	cursor: pointer;
+}
+
+/* .brandCon2 */
+.brand .brandCon2 {
+	position: absolute;
+	display: none;
+	width: 500px;
+	/* height: 560px; */
+	height: 100%;
+
+	top: 139px;
+	right: 280px;
+}
+
+/* .fir2 */
+.brandCon2 .fir2 {
+	width: 100%;
+}
+
+.fir2 label {
+	font-size: 22px;
+	
+	color: #3F2B2B;
+}
+
+/* .sec2 */
+.brandCon2 .sec2 {
+	width: 100%;
+	margin-top: 125px;
+}
+
+.sec2 label {
+	font-size: 22px;
+	color: #3F2B2B;
+}
+
+
+/* fir, sec, thi > label, textarea */
+.brandCon2 input {
+	padding-bottom: 7px;
+}
+
+.brandCon2 input, textarea {
+	width: 100%;
+	
+	margin-top: 22px;
+	border: 0;
+	border-bottom: 1px solid #3F2B2B;
+	
+	background-color: transparent;
+	
+	font-size: 16px;
+	color: #3F2B2B;
+	
+	outline: none;
+}
+
+.brandCon2 .conFooter2 {
+	position: relative;
+	width: 100%;
+	height: 249px;
+}
+
+.conFooter2 label {
+	position: absolute;
+	bottom: 0;
+	left: 232px;
+	color: #333;
+	font-size: 18px;
+}
+
+.conFooter2 span:nth-of-type(1) {
+	position: absolute;
+	bottom: 0;
+	
+	font-size: 24px;
+	font-weight: lighter;
+	
+	color: #333;
+	cursor: pointer;
+}
+
+.conFooter2 span:nth-of-type(2) {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+	font-size: 24px;
+	font-weight: lighter;
+	
+	color: #777;
+} /* end brand css */
+
+
+/* QnA */
+.QnA {
+	position: relative;
+	top: 80px;
+	right: 0;
+	width: 597px;
+	height: 563px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
