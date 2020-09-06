@@ -222,16 +222,17 @@ function enterLogIn() {
 										alert('문자전송 완료!');
 										
 											inspection.click(function() {
+												var recevieKey = $('#recevieKey');
 											
-											if ($.trim(data) == recevieKey.val()) {
-												alert('인증이 완료되었습니다. 인증번호로 로그인해주세요.');
-												clearInterval(timer);
-												location.href='/myblog/auth/close';
+												if ($.trim(data) == recevieKey.val()) {
+													alert('인증이 완료되었습니다. 인증번호로 로그인해주세요.');
+													clearInterval(timer);
+													location.href='/myblog/auth/close';
 
-											} else {
-												alert('인증에 실패했습니다, 다시 시도해주세요.');
-											}
-										});
+												} else {
+													alert('인증에 실패했습니다, 다시 시도해주세요.');
+												}
+											});
 										
 									}
 								});
