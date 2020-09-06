@@ -32,11 +32,11 @@
 		<a href="/logout" style="color: #fff;">로그아웃</a>
 		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
 		<label class="lock" onclick="location.href='/myblog/auth/logIn'">LOG IN</label>
-		<img class="myPage" src="/assets/images/myPage_white.png">
+		<img class="myPage" src="/assets/images/myPage_white.png?ver=1.1">
 	</header>
 	
 	<nav class="contact">
-		<img class="contactOn" src="/assets/images/Contact.png">
+		<img class="contactOn" src="/assets/images/contact.png">
 		
 		<div class="on">
 			<label class="title">CONTACT</label>
