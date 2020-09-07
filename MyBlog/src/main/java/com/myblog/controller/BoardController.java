@@ -93,7 +93,7 @@ public class BoardController {
 	
 	// 게시글 작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public ResponseEntity<Integer> registBoard(Board board, @RequestPart MultipartFile files) throws Exception {
+	public ResponseEntity<Integer> registBoard(Board board, @RequestPart MultipartFile files, HttpServletRequest req) throws Exception {
 		
 		if (files.isEmpty()) {
 			int result  = boardService.registBoard(board);
@@ -115,7 +115,9 @@ public class BoardController {
 			File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
-			String fileUrl = "\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			HttpSession session = req.getSession();
+			String rootPath = session.getServletContext().getRealPath("/");
+			String fileUrl = rootPath + "resources\\static\\uploads\\" // 절대경로 설정 - 프로젝트 내의 경로에 저장
 			
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
