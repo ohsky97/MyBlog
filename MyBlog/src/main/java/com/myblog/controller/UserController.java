@@ -88,35 +88,6 @@ public class UserController {
 		return numStr;
 	}
 
-	// 문자 인증번호 발송 & 비밀번호 변경
-	@ResponseBody
-	@RequestMapping(value = "/checkPN", method = RequestMethod.POST)
-	public String checkPN(@RequestBody UserEntity user) {
-
-		String userpn = user.getUserpn();
-		Random rand = new Random();
-		String numStr = "";
-		for (int i = 0; i < 6; i++) {
-			String ran = Integer.toString(rand.nextInt(10));
-			numStr += ran;
-		}
-		
-
-		String transPwd = passEncoder.encode(numStr);
-		System.out.println(userpn);
-
-		// 비밀번호 변경
-		user.setUserpn(userpn);
-		user.setUserpwd(transPwd);
-
-		userService.updatePwd(user);
-
-		System.out.println("수신자 번호 : " + userpn);
-		System.out.println("인증번호 : " + numStr);
-		smsService.certifiedPhoneNumber(userpn, numStr);
-		return numStr;
-	}
-
 	// 회원가입
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public String signUp(@RequestBody UserEntity user) {
@@ -159,6 +130,35 @@ public class UserController {
 		session.setAttribute("userPN", user.getUserpn());
 
 		return Integer.toString(result);
+	}
+	
+	// 문자 인증번호 발송 & 비밀번호 변경
+	@ResponseBody
+	@RequestMapping(value = "/checkPN", method = RequestMethod.POST)
+	public String checkPN(@RequestBody UserEntity user) {
+
+		String userpn = user.getUserpn();
+		Random rand = new Random();
+		String numStr = "";
+		for (int i = 0; i < 6; i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+		}
+		
+
+		String transPwd = passEncoder.encode(numStr);
+		System.out.println(userpn);
+
+		// 비밀번호 변경
+		user.setUserpn(userpn);
+		user.setUserpwd(transPwd);
+
+		userService.updatePwd(user);
+
+		System.out.println("수신자 번호 : " + userpn);
+		System.out.println("인증번호 : " + numStr);
+		smsService.certifiedPhoneNumber(userpn, numStr);
+		return numStr;
 	}
 
 	// close
