@@ -117,7 +117,7 @@ public class BoardController {
 			
 			HttpSession session = req.getSession();
 			String rootPath = session.getServletContext().getRealPath("/");
-			String fileUrl = rootPath + "resources\\static\\uploads\\" // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			String fileUrl = rootPath + "resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
 			
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
