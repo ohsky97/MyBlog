@@ -62,7 +62,7 @@ header {
 header .logo {
 	position: absolute;
 	bottom: 0;
-	left: 100px;
+	left: 150px;
 	
 	cursor: pointer;
 }
@@ -70,9 +70,7 @@ header .logo {
 header .lock {
 	position: absolute;
 	bottom: 0;
-	right: 0;
-	margin-right: 150px;
-	margin-bottom: 0;
+	right: 150;
 	
 	color: #fff;
 	font-size: 18px;
@@ -83,23 +81,13 @@ header .myPage {
 	position: absolute;
 	display: none;
 	
-	width: 36px;
+	width: 30px;
 	
 	bottom: 0;
-	right: 100px;
+	right: 150px;
 	
 	cursor: pointer;
 }
-
-header .categoryBarBtn {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	margin-right: 75px;
-	
-	cursor: pointer;
-}
-
 
 /* contact */
 .contact {
