@@ -70,7 +70,7 @@ header .logo {
 header .lock {
 	position: absolute;
 	bottom: 0;
-	right: 150;
+	right: 150px;
 	
 	color: #fff;
 	font-size: 18px;
