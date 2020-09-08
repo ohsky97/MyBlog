@@ -94,6 +94,10 @@ main .btnGroup {
 	margin: 0;
 }
 
+main label {
+	color: #3c9dff;
+}
+
 .btnGroup #listBtn {
 	position: absolute;
 	right: 0;
