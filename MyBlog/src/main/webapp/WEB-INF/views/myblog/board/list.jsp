@@ -151,7 +151,13 @@
 	
 	console.log(${pagination.rangeSize});
 	
-	if (paging.clientWidth == 562) {
+/* 	if (paging.clientWidth == 562) {
+		paging.style.marginLeft = '-281px';
+		
+	}  */
+	console.log($('#paging').find('a').length);
+	
+	if ($('#paging').find('a').length == 14) {
 		paging.style.marginLeft = '-281px';
 	}
 	
