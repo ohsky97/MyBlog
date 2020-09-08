@@ -115,9 +115,9 @@ public class BoardController {
 			File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
-			HttpSession session = req.getSession();
-			String rootPath = session.getServletContext().getRealPath("/");
-			String fileUrl = rootPath + "resources/static/uploads/"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			// HttpSession session = req.getSession();
+			// String rootPath = session.getServletContext().getRealPath("/");
+			String fileUrl = ec2-user@ip-172-31-40-9:\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\; // 절대경로 설정 - 프로젝트 내의 경로에 저장
 			
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
