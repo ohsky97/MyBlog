@@ -28,7 +28,6 @@
 	<header>
 		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
 		<img class="myPage" src="/assets/images/myPage_white.png" onclick="location.href='/myblog/myPage'">
-		<img class="categoryBarBtn" src="/assets/images/category_brown.png">
 	</header>
 
 	<main class="table-responsive">
