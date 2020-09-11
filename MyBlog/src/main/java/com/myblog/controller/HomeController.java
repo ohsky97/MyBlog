@@ -12,13 +12,13 @@ public class HomeController {
 	private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	// home
-	@RequestMapping(value = "/myblog")
+	@RequestMapping(value = "/")
 	public String home(HttpSession session) {
 		logger.info("myblog main 호출");
 		session.getAttribute("userInfo");
 		
 		
-		return "/myblog/home";
+		return "/home";
 	}
 	
 	
