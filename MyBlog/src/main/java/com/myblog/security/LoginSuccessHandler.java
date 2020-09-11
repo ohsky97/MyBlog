@@ -36,7 +36,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		session.setAttribute("userInfo", user);
 //		session.setAttribute("userAuth", authentication.getName());
 		
-		response.sendRedirect("/myblog");
+		response.sendRedirect("/");
 	}
 	
 	protected void clearAuthenticationAttributes(HttpServletRequest req) {
