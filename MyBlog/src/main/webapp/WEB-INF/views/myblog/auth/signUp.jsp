@@ -17,7 +17,7 @@
 
 <div class="web">
 	<header>
-		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
+		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
 		<label class="lock" onclick="location.href='/myblog/auth/logIn'">LOG IN</label>
 	</header>
 	
