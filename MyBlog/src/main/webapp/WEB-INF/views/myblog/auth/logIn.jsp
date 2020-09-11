@@ -23,7 +23,7 @@
 <body>
 	
 	<header>
-		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
+		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
 	</header>
 	
 	<section class="logInForm">
