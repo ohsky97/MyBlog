@@ -29,7 +29,7 @@
 		<a href="/myblog/board/myPage" style="color: #fff;">마이페이지</a>
 		<a href="/myblog/board/list" style="color: #fff;">게시판</a>
 		<a href="/logout" style="color: #fff;">로그아웃</a>
-		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
+		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
 		<label class="lock" onclick="location.href='/myblog/auth/logIn'">LOG IN</label>
 		<img class="myPage" src="/assets/images/myPage_white.png">
 	</header>
