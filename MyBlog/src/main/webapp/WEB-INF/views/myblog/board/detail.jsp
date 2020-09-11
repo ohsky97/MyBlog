@@ -27,7 +27,7 @@
 	</div>
 
 	<header>
-		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/myblog'">
+		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
 		<img class="myPage" src="/assets/images/myPage_white.png" onclick="location.href='/myblog/myPage'">
 	</header>
 	
