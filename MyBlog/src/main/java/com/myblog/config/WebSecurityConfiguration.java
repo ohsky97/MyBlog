@@ -32,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable() // 추후 csrf 처리 진행
 			.authorizeRequests() // 인증 요청시 .permitAll()을 제외한 나머지 모든 요청은 권한이 필요
-				.antMatchers("/myblog", "/myblog/auth/**", "/myblog/contact").permitAll()
+				.antMatchers("/", "/myblog/auth/**", "/myblog/contact").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.formLogin() // 로그인 인증을 하여 권한 부여
