@@ -34,6 +34,22 @@
 		select * from tbl_user where uno = #{uno}
 	</select>
 	
+	<!-- 개인 정보 수정 -->
+	<update id="updateUserInfo">
+		update tbl_user set
+			username = #{username}, userpn = #{userpn}, userpwd = #{userpwd}, update_date = now()
+		where 
+			userid = #{userid}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteUser">
+		delete from 
+			tbl_user
+		where
+			userid = #{userid}
+	</delete>
+	
 </mapper>
 
 
