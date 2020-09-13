@@ -8,6 +8,9 @@
 <title>로그인</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- css파일에 쿼리스트링을 적용한 이유
+	서버에 배포할 때 css파일이 이전과 달라졌음을 알리기 위함 (안하면 css가 적용안되는 경우가 있음)
+ -->
 <link rel="stylesheet" type="text/css" href="/assets/css/logIn.css?ver=1.1">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -170,6 +173,8 @@ function enterLogIn() {
 				NameCheck = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/,
 				PNCheck = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))(\d{4})$/;
 			
+			console.log(userName, userPN);	
+			
 			if (userName == '') {
 				alert('이름을 입력해주세요.');
 			} else if (!NameCheck.test(userName)) {
@@ -228,11 +233,11 @@ function enterLogIn() {
 													alert('인증이 완료되었습니다. 인증번호로 로그인해주세요.');
 													clearInterval(timer);
 													location.href='/myblog/auth/close';
-
+	
 												} else {
 													alert('인증에 실패했습니다, 다시 시도해주세요.');
 												}
-											});
+										});
 										
 									}
 								});
