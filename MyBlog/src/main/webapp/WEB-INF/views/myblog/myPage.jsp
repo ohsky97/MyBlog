@@ -40,7 +40,7 @@
 			</div>
 			<div class="PN">
 				<span>PHONE.</span>
-				<input id="userPN" type="text" name="userpn" value="0${userInfo.userpn}" placeholder="전화번호(-빼고 입력해주세요.)" required />
+				<input id="userPN" type="text" name="userpn" value="${userInfo.userpn}" placeholder="전화번호(-빼고 입력해주세요.)" required />
 			</div>
 			<div class="underBar">
 				<button id="ok" type="submit">수정</button>
