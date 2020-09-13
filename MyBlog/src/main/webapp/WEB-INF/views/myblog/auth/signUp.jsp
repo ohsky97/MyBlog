@@ -4,8 +4,11 @@
 <html>
 <head>
 	<title>회원가입</title>
-	
-<link rel="stylesheet" type="text/css" href="/assets/css/signUp.css">
+
+<!-- css파일에 쿼리스트링을 적용한 이유
+	서버에 배포할 때 css파일이 이전과 달라졌음을 알리기 위함 (안하면 css가 적용안되는 경우가 있음)
+ -->
+<link rel="stylesheet" type="text/css" href="/assets/css/signUp.css?ver=1.1">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -18,7 +21,7 @@
 <div class="web">
 	<header>
 		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
-		<label class="lock" onclick="location.href='/myblog/auth/logIn'">LOG IN</label>
+		<label class="lock" onclick="location.href='/myblog/auth/logIn'">Login</label>
 	</header>
 	
 	<div class="title">
@@ -47,7 +50,7 @@
 			
 			<div class="pwd">
 				<span>PSWD.</span>
-				<input id="userPwd" type="password" name="userpwd" placeholder="암호키" required />
+				<input id="userPwd" type="password" name="userpwd" placeholder="비밀번호" required />
 			</div>
 			<div class="PN">
 				<span>PHONE.</span>
@@ -67,7 +70,7 @@
 			</div>
 				
 			<div class="underBar">
-				<button id="ok" type="submit">발급</button>
+				<button id="ok" type="submit">가입</button>
 			</div>
 		</section>
 	</div>
@@ -134,7 +137,7 @@
 			
 		// userPwd 검사
 		} else if(userPwd == "") {
-			alert('암호키를 입력해주세요!');
+			alert('비밀번호를 입력해주세요!');
 			
 		} else if(userPwd.length < 6 || userPwd.length > 10) {
 			if(userPwd.length > 10) {
@@ -177,7 +180,7 @@
 				}),
 				success: function(result) {
 					alert('회원이 되신걸 환영합니다.');
-					location.href='/myblog/auth/logIn'
+					location.href='/myblog/auth/logIn';
 				}
 			}); 
 		}
