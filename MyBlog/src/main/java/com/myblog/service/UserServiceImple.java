@@ -71,5 +71,22 @@ public class UserServiceImple implements UserService {
 		return userMapper.findUserByUno(uno);
 	}
 
+	// 개인정보 수정
+	@Override
+	public int updateUserInfo(UserEntity user) {
+		
+		logger.info("updateUserInfo() 호출");
+		
+		return userMapper.updateUserInfo(user);
+	}
+
+	@Override
+	public int deleteUser(String userId) {
+
+		logger.info("deleteUser() 호출");
+		
+		return userMapper.deleteUser(userId);
+	}
+
 
 }
