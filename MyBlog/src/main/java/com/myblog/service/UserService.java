@@ -21,5 +21,11 @@ public interface UserService {
 	
 	// 회원번호로 정보찾기
 	public UserEntity checkUno(Long uno);
+	
+	// 개인정보 수정
+	public int updateUserInfo(UserEntity user);
+	
+	// 회원 탈퇴
+	public int deleteUser(String userId);
 
 }
