@@ -25,6 +25,11 @@ public interface UserMapper {
 	// 회원번호로 정보 찾기
 	UserEntity findUserByUno(Long uno);
 	
+	// 개인정보 수정
+	int updateUserInfo(UserEntity user);
+	
+	// 회원탈퇴
+	int deleteUser(String userId);
 
 }
 
