@@ -49,6 +49,7 @@ public class BoardController {
 	@Autowired
 	private FileService fileService;
 	
+	@Autowired
 	private S3Service s3Service;
 	
 	// 게시판 페이지 이동 시 리스트 출력
@@ -115,7 +116,6 @@ public class BoardController {
 		} else {
 			String fileName = files.getOriginalFilename();
 			String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
-			File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
 			// HttpSession session = req.getSession();
@@ -124,13 +124,7 @@ public class BoardController {
 			
 			String fileUrl = s3Service.upload(files);
 			
-			do {
-				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
-				destinationFile = new File(fileUrl + destinationFileName);
-			} while (destinationFile.exists());
-			
-			destinationFile.getParentFile().mkdirs();
-			files.transferTo(destinationFile);
+			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
 			
 			int result = boardService.registBoard(board);
 			
