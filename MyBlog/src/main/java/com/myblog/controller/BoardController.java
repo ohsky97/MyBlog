@@ -48,6 +48,9 @@ public class BoardController {
 	@Autowired
 	private FileService fileService;
 	
+	@Autowired
+	private S3Service s3Service;
+	
 	// 게시판 페이지 이동 시 리스트 출력
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String getBoardList(Model model, HttpSession session,
@@ -117,7 +120,9 @@ public class BoardController {
 			
 			// HttpSession session = req.getSession();
 			// String rootPath = session.getServletContext().getRealPath("/");
-			String fileUrl = "ec2-user@ip-172-31-5-2:\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			//String fileUrl = "ec2-user@ip-172-31-5-2:\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			
+			String fileUrl = s3Service.upload(files);
 			
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
