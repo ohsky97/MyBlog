@@ -49,7 +49,6 @@ public class BoardController {
 	@Autowired
 	private FileService fileService;
 	
-	@Autowired
 	private S3Service s3Service;
 	
 	// 게시판 페이지 이동 시 리스트 출력
