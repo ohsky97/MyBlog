@@ -35,6 +35,7 @@ import com.myblog.domain.FileVO;
 import com.myblog.domain.Reply;
 import com.myblog.service.BoardService;
 import com.myblog.service.FileService;
+import com.myblog.service.S3Service;
 
 @Controller
 @RequestMapping(value = "/myblog/board")
