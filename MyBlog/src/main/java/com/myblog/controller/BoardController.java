@@ -322,18 +322,9 @@ public class BoardController {
 		} else {
 			String fileName = files.getOriginalFilename();
 			String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
-			File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
-			String fileUrl = "C:\\portfolio\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
-			
-			do {
-				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
-				destinationFile = new File(fileUrl + destinationFileName);
-			} while (destinationFile.exists());
-			
-			destinationFile.getParentFile().mkdirs();
-			files.transferTo(destinationFile);
+			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
 			
 			int result = boardService.updateBoard(board);
 			
@@ -366,7 +357,7 @@ public class BoardController {
 		System.out.println(fileVO);
 		
 		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
-		new File("C:\\portfolio\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\" + fileVO.getFilename().replace('/', File.separatorChar)).delete();
+		s3Service.deleteFile(fileVO.getFileoriname());
 		
 		// DB저장 내용 삭제
 		int result = fileService.fileDelete(fileVO.getFno());
