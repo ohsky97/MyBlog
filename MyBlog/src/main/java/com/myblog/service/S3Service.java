@@ -1,8 +1,9 @@
 package com.myblog.service;
 
-import javax.annotation.PostConstruct;
-
+import java.io.File;
 import java.io.IOException;
+
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import lombok.NoArgsConstructor;
@@ -61,14 +63,29 @@ public class S3Service {
 	}
 	
 	public String upload(MultipartFile files) throws IOException {
+		
+		logger.info("S3Service - upload(): " + files.getOriginalFilename());
+		
 		String fileName = files.getOriginalFilename();
 		
 		s3Client.putObject(new PutObjectRequest(bucket, fileName, files.getInputStream(), null)
 				.withCannedAcl(CannedAccessControlList.PublicRead));
 		
 		// 업로드를 한 후, 컨트롤러에 해당 URL을 DB에 저장할 수 있도록 반환한다.
-		return s3Client.getUrl(bucket, fileName).toString();
+		String fileUrl = s3Client.getUrl(bucket, fileName).toString();
+		System.out.println("S3Service - upload(): " + fileUrl);
+		
+		return fileUrl;
 	}
+	
+	public void deleteFile(String fileName) throws IOException {
+		
+		logger.info("deleteFile() 호출");
+		s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName)
+				.withKey(accesskey));
+		
+	}
+	
 	
 }
 
