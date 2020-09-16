@@ -354,7 +354,7 @@ public class BoardController {
 	
 	// 업로드 파일 삭제
 	@RequestMapping(value = "/fileDelete", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> fileDelete(@RequestBody FileVO fileVO) {
+	public ResponseEntity<Integer> fileDelete(@RequestBody FileVO fileVO) throws IOException {
 		
 		System.out.println(fileVO);
 		
@@ -379,12 +379,12 @@ public class BoardController {
 	
 	// 게시판 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> deleteBoard(@RequestBody Board board) {
+	public ResponseEntity<Integer> deleteBoard(@RequestBody Board board) throws IOException {
 		
 		int result = boardService.deleteBoard(board.getBno());
 		
 		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
-		new File("C:\\portfolio\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\" + board.getFilename().replace('/', File.separatorChar)).delete();
+		s3Service.deleteFile(fileVO.getFileoriname());
 		
 		ResponseEntity<Integer> entity = null;
 		
