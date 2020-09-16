@@ -384,7 +384,7 @@ public class BoardController {
 		int result = boardService.deleteBoard(board.getBno());
 		
 		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
-		s3Service.deleteFile(fileVO.getFileoriname());
+		s3Service.deleteFile(board.getFilename());
 		
 		ResponseEntity<Integer> entity = null;
 		
