@@ -2,6 +2,8 @@ package com.myblog.service;
 
 import javax.annotation.PostConstruct;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,8 +53,6 @@ public class S3Service {
 		// accesskey와 secretkey를 이용하여 자격증명 객체를 얻는다.
 		AWSCredentials credentials = new BasicAWSCredentials(this.accesskey, this.secretkey);
 		
-		logger.info("");
-		
 		s3Client = AmazonS3ClientBuilder.standard()
 					// 자격증명을 통해 S3 Client를 가져온다.
 					.withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -60,10 +60,10 @@ public class S3Service {
 					.build();
 	}
 	
-	public String upload(MultipartFile file) throws Exception {
-		String fileName = file.getOriginalFilename();
+	public String upload(MultipartFile files) throws IOException {
+		String fileName = files.getOriginalFilename();
 		
-		s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
+		s3Client.putObject(new PutObjectRequest(bucket, fileName, files.getInputStream(), null)
 				.withCannedAcl(CannedAccessControlList.PublicRead));
 		
 		// 업로드를 한 후, 컨트롤러에 해당 URL을 DB에 저장할 수 있도록 반환한다.
