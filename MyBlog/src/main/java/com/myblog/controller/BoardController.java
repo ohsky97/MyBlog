@@ -326,6 +326,8 @@ public class BoardController {
 			
 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
 			
+			String fileUrl = s3Service.upload(files);
+			
 			int result = boardService.updateBoard(board);
 			
 			FileVO file = new FileVO();
