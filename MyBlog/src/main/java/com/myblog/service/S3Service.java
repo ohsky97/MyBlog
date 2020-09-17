@@ -62,6 +62,7 @@ public class S3Service {
 					.build();
 	}
 	
+	// s3 파일 업로드
 	public String upload(MultipartFile files) throws IOException {
 		
 		logger.info("S3Service - upload(): " + files.getOriginalFilename());
@@ -78,11 +79,10 @@ public class S3Service {
 		return fileUrl;
 	}
 	
-	public void deleteFile(String fileName) throws IOException {
+	// s3 파일 삭제
+	public void deleteFile(String fileName, String fileCustomName) {
 		
-		logger.info("deleteFile() 호출");
-		s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName)
-				.withKey(accesskey));
+		s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName + "-" + fileCustomName));
 		
 	}
 	
