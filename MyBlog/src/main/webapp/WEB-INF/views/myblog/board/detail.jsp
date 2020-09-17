@@ -213,7 +213,8 @@
 		// 파일 업로드 삭제
 		$('.btnDeleteFile').click(function() {
 			var fno = '${files.fno}',
-				fileName = '${files.filename}';
+				fileName = '${files.filename}',
+				fileOriName = '${files.fileoriname}';
 			
 			$.ajax({
 				type: 'delete',
@@ -224,7 +225,8 @@
 				},
 				data: JSON.stringify({
 					'fno': fno,
-					'filename': fileName 
+					'filename': fileName,
+					'fileoriname': fileOriName
 				}),
 				success: function(result) {
 					if (result == 1) {
