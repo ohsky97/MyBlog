@@ -357,10 +357,10 @@ public class BoardController {
 	@RequestMapping(value = "/fileDelete", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> fileDelete(@RequestBody FileVO fileVO) throws IOException {
 		
-		System.out.println(fileVO);
+		System.out.println("fileDelete: " + fileVO);
 		
 		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
-		s3Service.deleteFile(fileVO.getFileoriname());
+		s3Service.deleteFile(fileVO.getFileoriname(), fileVO.getFilename());
 		
 		// DB저장 내용 삭제
 		int result = fileService.fileDelete(fileVO.getFno());
