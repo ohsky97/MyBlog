@@ -308,11 +308,11 @@ public class BoardController {
 	
 	// 업로드 파일 삭제
 	@RequestMapping(value = "/fileDelete", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> fileDelete(@RequestBody FileVO fileVO) throws IOException {
+	public ResponseEntity<Integer> fileDelete(@RequestBody FileVO fileVO) {
 		
 		System.out.println("fileDelete: " + fileVO);
 		
-		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
+		// 원본 파일 삭제 - s3에 저장되어 있는 파일 삭제
 		s3Service.deleteFile(fileVO.getFileoriname(), fileVO.getFilename());
 		
 		// DB저장 내용 삭제
