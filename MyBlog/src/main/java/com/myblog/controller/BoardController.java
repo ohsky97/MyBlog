@@ -95,7 +95,7 @@ public class BoardController {
 	
 	// 게시글 작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public ResponseEntity<Integer> registBoard(Board board, @RequestPart MultipartFile files, HttpServletRequest req) throws Exception {
+	public ResponseEntity<Integer> registBoard(Board board, MultipartFile files) throws Exception {
 		
 		if (files.isEmpty()) {
 			int result  = boardService.registBoard(board);
@@ -114,19 +114,22 @@ public class BoardController {
 		} else {
 			String fileName = files.getOriginalFilename();
 			String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
+			//File destinationFile; // DB에 저장할 파일 고유명
 			String destinationFileName;
 			
-			// HttpSession session = req.getSession();
-			// String rootPath = session.getServletContext().getRealPath("/");
-			//String fileUrl = "ec2-user@ip-172-31-5-2:\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+//			String fileUrl = "C:\\portfolio\\MyBlog\\MyBlog\\src\\main\\resources\\static\\uploads\\"; // 절대경로 설정 - 프로젝트 내의 경로에 저장
+			System.out.println(files);
+			System.out.println(files.getOriginalFilename());
+			System.out.println(files.getContentType());
 			
-			String fileUrl = s3Service.upload(files);
 			
 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
 			
 			int result = boardService.registBoard(board);
 			
 			FileVO file = new FileVO();
+			String fileUrl = s3Service.upload(destinationFileName, files);
+			
 			file.setFilename(destinationFileName);
 			file.setFileoriname(fileName);
 			file.setFileurl(fileUrl);
