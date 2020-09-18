@@ -252,6 +252,7 @@ public class BoardController {
 					.contentType(MediaType.parseMediaType(contentType))
 					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + new String(fileVO.getFileoriname().getBytes("UTF-8"), "ISO8859_1") + "\"")
 					.body(resource);
+		
 	}
 	
 	// 게시판 수정
