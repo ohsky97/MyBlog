@@ -1,6 +1,5 @@
 package com.myblog.service;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +7,8 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +19,11 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
+import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.util.IOUtils;
 
 import lombok.NoArgsConstructor;
 
@@ -62,12 +67,14 @@ public class S3Service {
 					.build();
 	}
 	
-	// s3 파일 업로드
-	public String upload(MultipartFile files) throws IOException {
+	// s3 파일업로드
+	public String upload(String fileCustomName, MultipartFile files) throws IOException {
 		
 		logger.info("S3Service - upload(): " + files.getOriginalFilename());
 		
-		String fileName = files.getOriginalFilename();
+		// 중복된 파일 이름을 방지하기 위해 파일 번호를 같이 부여
+		String fileName = files.getOriginalFilename() + "-" + fileCustomName;
+		
 		
 		s3Client.putObject(new PutObjectRequest(bucket, fileName, files.getInputStream(), null)
 				.withCannedAcl(CannedAccessControlList.PublicRead));
@@ -79,13 +86,29 @@ public class S3Service {
 		return fileUrl;
 	}
 	
-	// s3 파일 삭제
+	// s3 파일삭제
 	public void deleteFile(String fileName, String fileCustomName) {
 		
 		s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName + "-" + fileCustomName));
 		
 	}
 	
+	
+	// s3 파일 다운로드
+	// Rest API 방식으로 데이터를 전달하기 위해 org.springframework.core.io.Resource를 사용
+	public Resource getFile(String fileName, String fileCustomName) throws IOException {
+		
+		logger.info("s3 fileDownload");
+		
+		S3Object o = s3Client.getObject(new GetObjectRequest(bucket, fileName + "-" + fileCustomName));
+		S3ObjectInputStream objectInputStream = o.getObjectContent();
+		byte[] bytes = IOUtils.toByteArray(objectInputStream);
+		
+		Resource resource = new ByteArrayResource(bytes);
+		
+		
+		return resource;
+	}
 	
 }
 
