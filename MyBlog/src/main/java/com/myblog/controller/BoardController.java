@@ -224,82 +224,34 @@ public class BoardController {
 	}
 	
 	// fileDownload
-	@RequestMapping(value = "/fileDown/{filebno}")
-	private void fileDown(@PathVariable int filebno, HttpServletRequest req, HttpServletResponse res) throws Exception {
+	@RequestMapping(value = "/fileDown/{filebno}", method = RequestMethod.GET)
+	private ResponseEntity<?> fileDown(@PathVariable int filebno, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
 		req.setCharacterEncoding("UTF-8");
 		FileVO fileVO = fileService.fileDetail(filebno);
 		
-		// 파일 업로드된 경로
+		Resource resource = s3Service.getFile(fileVO.getFileoriname(), fileVO.getFilename());
+		
+		String contentType = null;
+		
 		try {
-			String fileUrl = fileVO.getFileurl();
-			fileUrl += "/";
-			String savePath = fileUrl;
-			String fileName = fileVO.getFilename();
+			contentType = req.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+			System.out.println("contentType: " + contentType);
 			
-			// 실제로 보내질 파일명
-			String oriFileName = fileVO.getFileoriname();
-			InputStream in = null;
-			OutputStream out = null;
-			File file = null;
-			boolean skip = false;
-			String client = "";
-			
-			// 파일을 읽어 스트림에 담기
-			try {
-				file = new File(savePath, fileName);
-				in = new FileInputStream(file);
-				
-			} catch (FileNotFoundException e) {
-				skip = true;
-			}
-			
-			client = req.getHeader("User-Agent");
-			
-			// 파일 다운로드 헤더 저장
-			res.reset();
-			res.setContentType("application/octet-stream");
-			res.setHeader("Content-Description", "JSP Generated Data");
-			
-			if (!skip) {
-				// IE
-				if (client.indexOf("MISE") != -1) {
-					res.setHeader("Content-Disposition", "attachment; filename=\""
-							+ java.net.URLEncoder.encode(oriFileName, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
-				
-				// IE 11이상
-				} else if (client.indexOf("Trident") != -1) {
-					res.setHeader("Content-Disposition", "attachment; filename=\""
-							+ java.net.URLEncoder.encode(oriFileName, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
-					
-				} else {
-					// 한글 파일명 처리
-					res.setHeader("Content-Disposition", "attachment; filename=\"" 
-							+ new String(oriFileName.getBytes("UTF-8"), "ISO8859_1") + "\"");
-					res.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");
-					
-				}
-				
-				res.setHeader("Content-Length", "" + file.length());
-				out = res.getOutputStream();
-				byte b[] = new byte[(int) file.length()];
-				int leng = 0;
-				
-				while ((leng = in.read(b)) > 0) {
-					out.write(b, 0, leng);
-				}
-				
-			} else {
-				res.setContentType("text/html; charset=UTF-8");
-				System.out.println("<script language='javascript'>alert('파일을 찾을 수 없습니다.'); history.back();</script>");
-			}
-			
-			in.close();
-			out.close();
-			
-		} catch (Exception e) {
-			System.out.println("fileDownload Error: " + e.getMessage());
+		} catch (IOException e) {
+			logger.info("Could not determine file type");
 		}
+		
+		// 유형을 결정할 수없는 경우 기본 콘텐츠 유형으로 대체
+		if (contentType == null) {
+			contentType = "application/octet-stream; charset=UTF-8";
+		}
+		
+		
+		return ResponseEntity.ok()
+					.contentType(MediaType.parseMediaType(contentType))
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + new String(fileVO.getFileoriname().getBytes("UTF-8"), "ISO8859_1") + "\"")
+					.body(resource);
 	}
 	
 	// 게시판 수정
@@ -384,8 +336,10 @@ public class BoardController {
 		
 		int result = boardService.deleteBoard(board.getBno());
 		
-		// 원본 파일 삭제 - 프로젝트 경로에 있는 파일
-		s3Service.deleteFile(board.getFilename());
+		FileVO fileVO = fileService.fileDetail(board.getBno());
+		
+		// 원본 파일 삭제 - s3에 저장되어 있는 파일 삭제
+		s3Service.deleteFile(fileVO.getFileoriname(), fileVO.getFilename());
 		
 		ResponseEntity<Integer> entity = null;
 		
