@@ -275,13 +275,15 @@ public class BoardController {
 			String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
 			String destinationFileName;
 			
+			
 			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileNameExtension;
 			
-			String fileUrl = s3Service.upload(files);
 			
 			int result = boardService.updateBoard(board);
 			
 			FileVO file = new FileVO();
+			String fileUrl = s3Service.upload(destinationFileName, files);
+			
 			file.setFilename(destinationFileName);
 			file.setFileoriname(fileName);
 			file.setFileurl(fileUrl);
