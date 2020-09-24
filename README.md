@@ -43,7 +43,7 @@
     
 ### Database ERD
 
-<img src="/src/main/resources/static/assets/images/databaseERD.png">
+![databaseERD](https://user-images.githubusercontent.com/44282306/94099500-0c051380-fe66-11ea-94c4-b660ed2693a3.png)
     
     
     
