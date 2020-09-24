@@ -13,7 +13,6 @@
     - REST API
     - Mybatis
     - Jpa
-    - AWS(EC2, RDS, S3, Route 53)
 
   * Front-End
     - HTML5
@@ -24,6 +23,12 @@
     
   * Database
     - MySQL
+    
+  * Amazon Web Services
+    - EC2
+    - RDS
+    - S3
+    - Route 53
  
 ### 구현 기능
 
