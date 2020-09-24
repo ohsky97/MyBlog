@@ -43,7 +43,7 @@
     
 ### Database ERD
 
-<img src="/src/resources/static/assets/images/databaseERD.png">
+<img src="/src/main/resources/static/assets/images/databaseERD.png">
     
     
     
