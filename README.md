@@ -41,7 +41,9 @@
     - 게시판 수정
     - 게시판 삭제, 파일 삭제
     
-    
+### Database ERD
+
+<img src="/assets/images/databaseERD.png">
     
     
     
