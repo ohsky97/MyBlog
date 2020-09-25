@@ -27,6 +27,7 @@
 	
 	<header>
 		<img class="logo" src="/assets/images/logo.png" onclick="location.href='/'">
+		<label class="board" onclick="location.href='/myblog/board/list'">Board</label>
 		<label class="lock" onclick="location.href='/myblog/auth/logIn'">Login</label>
 		<img class="myPage" src="/assets/images/myPage_white.png"
 			onclick="location.href='/myblog/myPage'">
