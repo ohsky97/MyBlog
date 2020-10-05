@@ -5,6 +5,8 @@
 
 ### 사용 기술
 
+  * MVC 패턴을 사용하였습니다.
+
   * Back-End
     - Java10
     - Spring-Boot
